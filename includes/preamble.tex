@@ -1,0 +1,192 @@
+% !TeX root = PB1.tex
+
+% % % % % % % % % % Packages % % % % % % % % % %
+\usepackage{appendix}
+\usepackage{xcolor}
+\usepackage{graphicx}
+\usepackage{lmodern}
+\usepackage{framed}
+\usepackage[section]{algorithm}
+\usepackage{verbatim}
+\usepackage[english,ngerman]{babel} %% Deutsche Bezeichnungen im Dokument
+%\usepackage[ngerman,english]{babel} %% Englische Bezeichnungen im Dokument
+\usepackage{hyperref}
+\usepackage{amsmath}
+\usepackage{amsfonts}
+\usepackage{amssymb}
+\usepackage{a4wide}
+\usepackage[headsepline, footsepline]{scrlayer-scrpage}
+\usepackage{microtype}
+%\usepackage{fontspec} %% only if  using xelatex
+\usepackage{float}
+\usepackage[utf8]{inputenc}
+\usepackage{stringstrings}
+\usepackage{listings}
+\usepackage[notmath]{sansmathfonts}
+\usepackage{pdfpages}
+\usepackage{tikz}
+\usetikzlibrary{shapes,arrows.meta,positioning}
+\usepackage{lipsum}
+\usepackage[style=alphabetic, alldates=long, giveninits=true, maxbibnames=99, sortcites=true]{biblatex}
+\usepackage{booktabs}
+\usepackage{setspace}
+
+% % % % % % % % % %  DSA Colors % % % % % % % % % %  
+\definecolor{dsablue}{HTML}{2E75BF}
+
+
+% % % % % % % % % % oft verwendete Farben % % % % % % % % % %
+\definecolor{black}{rgb}{0,0,0}
+\definecolor{darkgrey}{rgb}{.4,.4,.4}
+\definecolor{grey}{rgb}{.7,.7,.7}
+\definecolor{white}{rgb}{1,1,1}
+
+\definecolor{blue}{rgb}{0,0,1}
+\definecolor{red}{rgb}{1,0,0}
+\definecolor{green}{rgb}{0,1,0}
+
+\definecolor{midblue}{rgb}{0,0,.7}
+\definecolor{midred}{rgb}{.7,0,0}
+\definecolor{midgreen}{rgb}{0,.7,0}
+
+\definecolor{darkblue}{rgb}{0,0,.4}
+\definecolor{darkred}{rgb}{.4,0,0}
+\definecolor{darkgreen}{rgb}{0,.4,0}
+
+\definecolor{orange}{rgb}{1,.4,0}
+\definecolor{cyan}{rgb}{0,1,.8}
+\definecolor{purple}{rgb}{.6,0,.6}
+\definecolor{lavender}{rgb}{.6,.6,1}
+\definecolor{yellow}{rgb}{1,.8,.2}
+
+
+
+% % % % % % % % % %  RWTH Colors % % % % % % % % % %  
+\definecolor{rwthgrey75}{RGB}{100,101,103}
+\definecolor{rwthgrey50}{RGB}{156,158,159}
+\definecolor{rwthgrey25}{RGB}{207,209,210}
+\definecolor{rwthgrey10}{RGB}{236,237,237}
+
+\definecolor{rwthblue100}{HTML}{00549F}
+\definecolor{rwthblue75}{HTML}{407FB7}
+\definecolor{rwthblue50}{HTML}{8EBAE5}
+\definecolor{rwthblue25}{HTML}{C7DDF2}
+\definecolor{rwthblue10}{HTML}{E8F1FA}
+
+% % % % % % % % % %  FH, IT Center and MATSE Colors % % % % % % % % % % 
+\definecolor{fhgreen}{HTML}{00B1AC}
+\definecolor{itcorange}{HTML}{F6A800}
+\definecolor{matseblue}{HTML}{00549F}
+
+
+
+% % % % % % % % % %  Kopf- und Fu{\ss}zeile %
+\automark[chapter]{chapter}
+\clearmainofpairofpagestyles
+
+%\rohead{\normalfont\vfill\headmark}
+%\lehead{\includegraphics[height=8mm]{media/images/logo_dsa.png}}
+%\ofoot*{\pagemark}
+
+\ohead{\includegraphics[height=8mm]{images/logo_dsa.png}}
+\ihead{\normalfont\vfill\headmark}
+\cfoot*{\pagemark}
+\ofoot*{}
+
+\ModifyLayer[addvoffset=-1ex]{scrheadings.foot.above.line}
+\ModifyLayer[addvoffset=-1ex]{plain.scrheadings.foot.above.line}
+\ModifyLayer[addvoffset=1ex]{scrheadings.head.below.line}
+
+
+% % % % % % % % % %  Farboptionen % % % % % % % % % % 
+%% Screen ist bunt, Print ist schwarz. Passendes einkommentieren.
+
+% Screen
+%\hypersetup{
+%  pdftitle={Erster Praxisbericht},
+%  pdfauthor={Marco JAN{\SS}EN, 3275330},
+%  pdfsubject={Aufbau eines lokalen Caches zu Teilen einer Datenbank},
+%  colorlinks=true,
+%  linkcolor=midblue,
+%  citecolor=midgreen,
+%  urlcolor=midred
+%}
+
+% Print
+%\hypersetup{
+%  pdftitle={Erster Praxisbericht},
+%  pdfauthor={Marco JAN{\SS}EN, 3275330},
+%  pdfsubject={Aufbau eines lokalen Caches zu Teilen einer Datenbank},
+%  colorlinks=true,
+%  linkcolor=black,
+%  citecolor=black,
+%  urlcolor=black
+%}
+
+% % % % % % % % % %  Umgebung f{\"u}r Beispiele % % % % % % % % % % 
+\newlength{\leftbarwidth}
+\setlength{\leftbarwidth}{1pt}
+\newlength{\leftbarsep}
+\setlength{\leftbarsep}{10pt}
+\newlength{\leftbarheight}
+\setlength{\leftbarheight}{10pt}
+
+\newcommand*{\leftbarcolorcmd}[1]{\color{#1}}% as a command to be more flexible
+
+
+%%% Useful for marking examples, which are inserted into the text. Usage see below.
+\newenvironment{example}[1][black]{%
+    \def\FrameCommand{{\leftbarcolorcmd{#1}{\hspace{3pt}  \vrule width \leftbarwidth \relax\hspace {\leftbarsep}}}}%
+    \MakeFramed {\vspace{2pt} \advance \hsize -\width \FrameRestore }%
+\vspace{-0.5em}}{ %
+    \vspace{2pt} \endMakeFramed
+}
+
+\renewenvironment{leftbar}[1][black]{%
+    \def\FrameCommand{{\leftbarcolorcmd{#1}{\hspace{3pt}  \vrule width \leftbarwidth \relax\hspace {\leftbarsep}}}}%
+    \MakeFramed {\vspace{2pt} \advance \hsize -\width \FrameRestore }%
+\vspace{-1.5em}}{ %
+    \vspace{2pt} \endMakeFramed
+}
+
+% % % % % % % % % %  Listings % % % % % % % % % % 
+\lstset{
+    xleftmargin=24pt,
+    xrightmargin=24pt,
+    numbersep=8pt,
+    basicstyle=\ttfamily\footnotesize,
+    columns=fixed,
+    showstringspaces=false,
+    frame=tb,
+    numbers=left,
+    language=Java
+}
+\renewcommand\lstlistlistingname{Listingverzeichnis}
+\renewcommand\lstlistingname{Listing}
+
+% % % % % % % % % %  Generelle Einstellungen im Dokument % % % % % % % % % % 
+\setlength{\parindent}{0pt}
+\renewcommand{\familydefault}{\sfdefault}
+
+% \renewlistof\listoffigures{lof}{Abbildungs-, Tabellen- und Listingverzeichnis}
+
+% % % % % % % % % %  Eigene Kommandos % % % % % % % % % % 
+\newcommand\todo[1]{\textcolor{red}{\itshape TODO: #1}}
+\newcommand\forceblankpage{\newpage\thispagestyle{empty}\phantom{ }\newpage}
+
+
+
+% % % % % % % % % %  BibLaTeX % % % % % % % % % % 
+\addbibresource{Praxisbericht2.bib}
+\DefineBibliographyExtras{german}{
+    \DeclareNameAlias{author}{family-given}
+    \DeclareDelimFormat{finalnamedelim}{;\space}
+    \DeclareDelimFormat{multinamedelim}{;\space}
+    \renewcommand*{\mkbibnamefamily}[1]{\textsc{#1}}
+    \DeclareDelimFormat[bib]{nametitledelim}{\addcolon\space}
+    \DeclareFieldFormat{urldate}{\addcomma\space abgerufen am\space#1}
+}
+
+
+% % % % % % % % % %  Einstellungen KOMA-Script % % % % % % % % % % 
+\KOMAoptions{cleardoublepage=empty, parskip=half}

@@ -1,0 +1,19 @@
+\chapter{Projektbeschreibung}
+Die DSA Daten- und Systemtechnik GmbH entwickelt Soft- und Hardwarelösungen zur Diagnose
+elektronischer Fahrzeugkomponenten in der Automobilindustrie und bietet Logistik- und
+Qualitätssicherungssystemen für die Flughafenlogistik und Baustoffindustrie an. Eines der
+Softwareprodukte ist das Remote Production System Prodis.PlantHUB, ein Umlaufprüfsystem zur
+zentralen Steuerung und Überwachung von Produktionsumgebungen. Unter anderem bietet es Monitoring
+und Konfiguration durch eine Webanwendung. PlantHUB kommuniziert mit dem Fahrzeug über ein
+Vehicle-Communication-Interface (VCI), ein Gerät, welches zu Beginn mit dem Fahrzeug verbunden wird
+und über das die Position des Fahrzeugs in der Produktionslinie verfolgt wird. Gelangt das Fahrzeug
+in einen Testbereich können automatisch Diagnosetests ausgeführt und dessen Daten ausgelesen und
+ausgewertet werden. Werksmitarbeiter können mit mobilen Geräten das VCI scannen, und so Daten über
+das Fahrzeug und den aktuellen Test erfahren. \\
+Das Backend verfolgt die Microservice-Architektur und ist eventbasiert. Es gibt drei Arten von
+Microservices: Services enthalten die digitalen Repräsentationen (Digital Twins) von Fahrzeugen,
+VCIs und weiteren Geräten. Sie erzeugen außerdem Events. Agents enthalten die Geschäftslogik des
+Systems, reagieren auf die Events und ändern den Status der digital Twins basierend auf den Events.
+Adapter sorgen für die Kommunikation mit externen Kundensystemen. Das System wird beim Kunden auf
+einem Server installiert. Dieser wählt eine beliebige Konfiguration von Features, die durch Microservices
+implementiert sind.
